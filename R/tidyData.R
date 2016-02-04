@@ -25,7 +25,11 @@ tidyData <- function() {
               shiny::textInput("key", "Key:", placeholder = "Variable"),
               shiny::textInput("value", "Value:", placeholder =  "Value")
               ),
-      shiny::selectInput("cols", "Columns:", choices = NULL, multiple = TRUE),
+      shiny::fillRow(height = "15%",
+              shiny::selectInput("cols", "Columns:", choices = NULL, multiple = TRUE),
+              shiny::checkboxInput("narm", "Removing output rows where value is NA", 
+                                  value = FALSE)
+      ),
       shiny::tableOutput("gatherData")
     )
   )
@@ -34,6 +38,7 @@ tidyData <- function() {
     # Define reactive expressions, outputs, etc.
     data <- shiny::reactive({
       # get the selected data and update the column options
+      shiny::validate(shiny::need(input$data != "", "No data frames found"))
       data <- get(input$data)
       shiny::updateSelectInput(session, "cols", choices = names(data))
       data
@@ -44,7 +49,8 @@ tidyData <- function() {
       # apply gather to the selected columns
       tidyr::gather_(data, key_col = input$key,
                      value_col = input$value,
-                     gather_cols = input$cols)
+                     gather_cols = input$cols, 
+                     na.rm = input$narm)
       })
 
     # When the Done button is clicked, return a value
@@ -53,6 +59,7 @@ tidyData <- function() {
       call <- paste0("gather(data=", input$data,
                      ",key=", input$key,
                      ",value=", input$value,
+                     ",na.rm=", input$narm,
                      ",",cols, ")")
         # return function call
         shiny::stopApp(rstudioapi::insertText(call))

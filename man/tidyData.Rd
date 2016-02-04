@@ -2,11 +2,16 @@
 % Please edit documentation in R/tidyData.R
 \name{tidyData}
 \alias{tidyData}
-\title{Allow users to search a package for a function}
+\title{Interactively format data}
 \usage{
 tidyData()
 }
 \description{
-Allow users to search a package for a function
+By selecting a data set the user can set all options for working with the \code{gather}
+function of the \code{tidyr} package. The user is able to visualise the impact of the
+options set and on return the shiny gadget will return the code required to recreate.
+}
+\author{
+Aimee Gott
 }
 
