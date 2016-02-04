@@ -1,0 +1,15 @@
+Package: tidyshiny
+Type: Package
+Title: Interface for manipulating data with the tidyr package
+Version: 0.1.0
+Authors@R: person("Aimee", "Gott", email = "agott@mango-solutions.com", role = c("aut", "cre"))
+Description: Interactively manipulate data generating calls for the tidyr package.
+License: BSD-3
+LazyData: TRUE
+Imports:
+    miniUI,
+    shiny,
+    rstudioapi
+Suggests: 
+    tidyr
+RoxygenNote: 5.0.1

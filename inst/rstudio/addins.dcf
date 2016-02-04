@@ -1,0 +1,4 @@
+Name: Tidy Data
+Description: Interactively build tidyr function call (gather)
+Binding: tidyData
+Interactive: true
