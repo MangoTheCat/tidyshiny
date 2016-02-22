@@ -11,6 +11,8 @@ tidyData <- function() {
 
   # Get all of the objects in the global environment
   objects <- ls(pos = 1)
+  
+  if(length(objects) == 0) stop("No objects found. Please create a data.frame to continue", call. = FALSE)
   # determine which are data frames
   dataChoices <- objects[sapply(objects, function(x) is.data.frame(get(x)))]
 
@@ -70,3 +72,4 @@ tidyData <- function() {
   shiny::runGadget(ui, server, viewer = shiny::dialogViewer("Tidy Data",
                                                             width = 800))
 }
+
