@@ -7,9 +7,9 @@ Description: Interactively manipulate data generating calls for the tidyr packag
 License: BSD-3
 LazyData: TRUE
 Imports:
-    miniUI,
-    shiny,
-    rstudioapi
+    miniUI (>= 0.1.1),
+    shiny (>= 0.13),
+    rstudioapi (>= 0.5)
 Suggests: 
-    tidyr
+    tidyr (>= 0.4)
 RoxygenNote: 5.0.1
