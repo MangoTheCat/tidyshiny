@@ -9,7 +9,6 @@ LazyData: TRUE
 Imports:
     miniUI (>= 0.1.1),
     shiny (>= 0.13),
-    rstudioapi (>= 0.5)
-Suggests: 
+    rstudioapi (>= 0.5),
     tidyr (>= 0.4)
 RoxygenNote: 5.0.1
