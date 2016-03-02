@@ -4,7 +4,11 @@
 \alias{tidyData}
 \title{Interactively format data}
 \usage{
-tidyData()
+tidyData(data)
+}
+\arguments{
+\item{data}{(Optional) Data frame to be manipulated. If not provided the data from 
+all data.frame objects in the current environment will be available for selection in the gadget.}
 }
 \description{
 By selecting a data set the user can set all options for working with the \code{gather}
