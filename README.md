@@ -5,7 +5,11 @@ Interactively manipulate data with the tidyr package using this handy shiny gadg
 ```
 library(devtools)
 install_github("MangoTheCat/tidyshiny")
+
 library(tidyshiny)
+
+testData <- airquality
+
 tidyData()
 ```
 
