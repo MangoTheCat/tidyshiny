@@ -64,7 +64,11 @@ tidyData <- function() {
                      ",na.rm=", input$narm,
                      ",",cols, ")")
         # return function call
+      if(rstudioapi::isAvailable()){
         shiny::stopApp(rstudioapi::insertText(call))
+      } else{
+        shiny::stopApp(call)
+        }
     })
   }
 
