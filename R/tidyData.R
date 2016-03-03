@@ -53,6 +53,7 @@ tidyData <- function(data) {
       data
       })
     
+    # Define a default Key if one isn't supplied
     key <- reactive({
       
       if(input$key == "") "Key"
@@ -60,6 +61,7 @@ tidyData <- function(data) {
       
       })
     
+    # Define a default VAlue if one isn't supplied
     value <- reactive({
       
       if(input$value == "") "Value"
@@ -67,6 +69,7 @@ tidyData <- function(data) {
       
       })
 
+    # Apply the gather function to view output
     output$gatherData <- shiny::renderTable({
       data <- data()
       
@@ -83,8 +86,14 @@ tidyData <- function(data) {
       call <- paste0("tidyr::gather(data=", input$data,
                      ",key=", key(),
                      ",value=", value(),
-                     ",na.rm=", input$narm,
-                     ",",cols, ")")
+                     ",na.rm=", input$narm)
+      if(cols == ""){
+        call <- paste0(call, ")")
+        warning("No columns selected, generated code will result in all columns gathered", 
+                call. = FALSE)
+      } else{
+        call <- paste0(call, ",",cols, ")")
+      }
         # return function call
       if(rstudioapi::isAvailable()){
         shiny::stopApp(rstudioapi::insertText(call))
