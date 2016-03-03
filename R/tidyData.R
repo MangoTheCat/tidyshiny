@@ -32,7 +32,7 @@ tidyData <- function(data) {
       shiny::selectInput("data", "Choose data:", choices = dataChoices),
       shiny::fillRow(height = "15%",
               shiny::textInput("key", "Key:", placeholder = "Variable"),
-              shiny::textInput("value", "Value:", placeholder =  "Value")
+              shiny::textInput("value", "Value:", placeholder = "Value")
               ),
       shiny::fillRow(height = "15%",
               shiny::selectInput("cols", "Columns:", choices = NULL, multiple = TRUE),
@@ -52,12 +52,27 @@ tidyData <- function(data) {
       shiny::updateSelectInput(session, "cols", choices = names(data))
       data
       })
+    
+    key <- reactive({
+      
+      if(input$key == "") "Key"
+      else input$key
+      
+      })
+    
+    value <- reactive({
+      
+      if(input$value == "") "Value"
+      else input$value
+      
+      })
 
     output$gatherData <- shiny::renderTable({
       data <- data()
+      
       # apply gather to the selected columns
-      tidyr::gather_(data, key_col = input$key,
-                     value_col = input$value,
+      tidyr::gather_(data, key_col = key(),
+                     value_col = value(),
                      gather_cols = input$cols, 
                      na.rm = input$narm)
       })
@@ -65,9 +80,9 @@ tidyData <- function(data) {
     # When the Done button is clicked, return a value
     shiny::observeEvent(input$done, {
       cols <- paste0(input$cols, collapse = ",")
-      call <- paste0("gather(data=", input$data,
-                     ",key=", input$key,
-                     ",value=", input$value,
+      call <- paste0("tidyr::gather(data=", input$data,
+                     ",key=", key(),
+                     ",value=", value(),
                      ",na.rm=", input$narm,
                      ",",cols, ")")
         # return function call
