@@ -54,7 +54,7 @@ tidyData <- function(data) {
       })
     
     # Define a default Key if one isn't supplied
-    key <- reactive({
+    key <- shiny::reactive({
       
       if(input$key == "") "Key"
       else input$key
@@ -62,7 +62,7 @@ tidyData <- function(data) {
       })
     
     # Define a default VAlue if one isn't supplied
-    value <- reactive({
+    value <- shiny::reactive({
       
       if(input$value == "") "Value"
       else input$value
