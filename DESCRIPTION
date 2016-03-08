@@ -4,7 +4,7 @@ Title: Interface for manipulating data with the tidyr package
 Version: 0.1.0
 Authors@R: person("Aimee", "Gott", email = "agott@mango-solutions.com", role = c("aut", "cre"))
 Description: Interactively manipulate data generating calls for the tidyr package.
-License: BSD-3
+License: BSD_3_clause + file LICENSE
 LazyData: TRUE
 Imports:
     miniUI (>= 0.1.1),
