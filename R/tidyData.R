@@ -85,22 +85,11 @@ tidyData <- function(data) {
       
       cols <- input$cols
       
-      if(is.null(cols)){
-        colCall <- ")"
-        warning("No columns selected, generated code will result in all columns gathered", 
-                call. = FALSE)
-      } else{
-        cols <- lapply(cols, as.name)
-        colCall <- paste(cols, collapse = ", ")
-        colCall <- paste0(",", colCall, ")")
-      }
-      
-      call <- paste("tidyr::gather(data=", input$data,
-                     ",key=", key(),
-                     ",value=", value(),
-                     ",na.rm=", input$narm)
-      
-      call <- paste(call, colCall)
+      call <- buildGather(data = input$data, 
+                  key = key(),
+                  value = value(),
+                  cols = cols,
+                  na.rm = input$narm)
       
         # return function call
       if(rstudioapi::isAvailable()){
