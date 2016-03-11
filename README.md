@@ -6,6 +6,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/MangoTheCat/tidyshiny.svg?branch=master)](https://travis-ci.org/MangoTheCat/tidyshiny)
 [![](http://www.r-pkg.org/badges/version/tidyshiny)](http://www.r-pkg.org/pkg/tidyshiny)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/tidyshiny)](http://www.r-pkg.org/pkg/tidyshiny)
+[![Coverage Status](https://codecov.io/github/MangoTheCat/tidyshiny/coverage.svg?branch=master)](https://codecov.io/github/MangoTheCat/tidyshiny?branch=master)
 
 ## Installation
 
