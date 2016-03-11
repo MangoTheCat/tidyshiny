@@ -82,18 +82,26 @@ tidyData <- function(data) {
 
     # When the Done button is clicked, return a value
     shiny::observeEvent(input$done, {
-      cols <- paste0(input$cols, collapse = ",")
-      call <- paste0("tidyr::gather(data=", input$data,
-                     ",key=", key(),
-                     ",value=", value(),
-                     ",na.rm=", input$narm)
-      if(cols == ""){
-        call <- paste0(call, ")")
+      
+      cols <- input$cols
+      
+      if(is.null(cols)){
+        colCall <- ")"
         warning("No columns selected, generated code will result in all columns gathered", 
                 call. = FALSE)
       } else{
-        call <- paste0(call, ",",cols, ")")
+        cols <- lapply(cols, as.name)
+        colCall <- paste(cols, collapse = ", ")
+        colCall <- paste0(",", colCall, ")")
       }
+      
+      call <- paste("tidyr::gather(data=", input$data,
+                     ",key=", key(),
+                     ",value=", value(),
+                     ",na.rm=", input$narm)
+      
+      call <- paste(call, colCall)
+      
         # return function call
       if(rstudioapi::isAvailable()){
         shiny::stopApp(rstudioapi::insertText(call))
