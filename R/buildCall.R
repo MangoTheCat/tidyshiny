@@ -8,6 +8,8 @@
 #' @param cols A vector of character strings
 #' @param na.rm A logical value
 #'
+#' @return A character string giving the function call based on the input arguments
+#'
 #' @author Aimee Gott
 buildGather <- function(data, key, value, cols, na.rm){
 
