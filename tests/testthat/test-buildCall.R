@@ -60,7 +60,54 @@ test_that("If no columns are selected a valid function call is returned", {
   })
 
 
+testNA <- data.frame(ID = 1:5,
+                       A = c(NA, 7:10),
+                       B = c(11:14, NA))
+
 test_that("Missing values are correctly removed", {
+
+  call <- buildGather("testNA",
+                      key = "Column",
+                      value = "Obs",
+                      cols = c("A", "B"),
+                      na.rm = TRUE)
+
+  expect_equal(call,
+               "tidyr::gather(data = testNA, key = Column, value = Obs, na.rm = TRUE, A, B)")
+
+  callOut <- try(eval(parse(text = call)), silent = TRUE)
+
+  expect_false(class(callOut) == "try-error")
+
+  expectedOut <- data.frame(ID = c(2:5, 1:4),
+                            Column = rep(c("A", "B"), each = 4),
+                            Obs = 7:14,
+                            stringsAsFactors = FALSE)
+  row.names(expectedOut) <- 2:9
+
+  expect_equal(callOut, expectedOut)
+
+  ## Do not remove missing values
+  call <- buildGather("testNA",
+                      key = "Column",
+                      value = "Obs",
+                      cols = c("A", "B"),
+                      na.rm = FALSE)
+
+  expect_equal(call,
+               "tidyr::gather(data = testNA, key = Column, value = Obs, na.rm = FALSE, A, B)")
+
+  callOut <- try(eval(parse(text = call)), silent = TRUE)
+
+  expect_false(class(callOut) == "try-error")
+
+  expectedOut <- data.frame(ID = 1:5,
+                            Column = rep(c("A", "B"), each = 5),
+                            Obs = c(NA, 7:14, NA),
+                            stringsAsFactors = FALSE)
+
+  expect_equal(callOut, expectedOut)
+
 
   })
 
