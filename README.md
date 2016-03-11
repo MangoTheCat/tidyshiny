@@ -2,7 +2,7 @@
 
 > Interactively manipulate data with the `tidyr` package using this handy shiny gadget. 
 
-[![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 [![](http://www.r-pkg.org/badges/version/tidyshiny)](http://www.r-pkg.org/pkg/tidyshiny)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/tidyshiny)](http://www.r-pkg.org/pkg/tidyshiny)
 
