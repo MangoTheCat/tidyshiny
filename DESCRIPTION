@@ -12,3 +12,4 @@ Imports:
     rstudioapi (>= 0.5),
     tidyr (>= 0.4)
 RoxygenNote: 5.0.1
+Suggests: testthat
