@@ -3,6 +3,7 @@
 > Interactively manipulate data with the `tidyr` package using this handy shiny gadget. 
 
 [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![Travis-CI Build Status](https://travis-ci.org/MangoTheCat/tidyshiny.svg?branch=master)](https://travis-ci.org/MangoTheCat/tidyshiny)
 [![](http://www.r-pkg.org/badges/version/tidyshiny)](http://www.r-pkg.org/pkg/tidyshiny)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/tidyshiny)](http://www.r-pkg.org/pkg/tidyshiny)
 
