@@ -86,7 +86,9 @@ test_that("Missing values are correctly removed", {
   row.names(expectedOut) <- 2:9
 
   expect_equal(callOut, expectedOut)
-
+})
+  
+test_that("Missing values are correctly not removed", { 
   ## Do not remove missing values
   call <- buildGather("testNA",
                       key = "Column",
